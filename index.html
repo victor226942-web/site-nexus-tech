@@ -87,7 +87,7 @@ nav {
     text-decoration: none;
 }
 
-.mlogo { width: 48px; height: auto; }
+.mlogo { width: 52px; height: auto; object-fit: contain; }
 
 .nav-name {
     font-family: var(--font-header);
@@ -426,20 +426,7 @@ footer {
 <nav>
     <div class="container nav-wrapper">
         <a href="#" class="nav-logo">
-            <svg class="mlogo" viewBox="0 0 600 300" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                    <linearGradient id="lg-nav" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stop-color="#a78bfa"/>
-                        <stop offset="100%" stop-color="#8b5cf6"/>
-                    </linearGradient>
-                </defs>
-                <path d="M 300,150 C 200,50 50,50 50,150 C 50,250 200,250 300,150 C 400,250 550,250 550,150 C 550,50 400,50 300,150"
-                      fill="none" stroke="url(#lg-nav)" stroke-width="45" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M 270,180 C 285,165 300,150 315,135"
-                      fill="none" stroke="#080711" stroke-width="55" stroke-linecap="round"/>
-                <path d="M 270,180 C 285,165 300,150 315,135"
-                      fill="none" stroke="url(#lg-nav)" stroke-width="45" stroke-linecap="round"/>
-            </svg>
+            <img src="logo-symbol.png" class="mlogo" alt="Nexus IA">
             <span class="nav-name">Nexus <span>IA</span></span>
         </a>
         <ul class="nav-links">
@@ -582,22 +569,8 @@ footer {
     <div class="container">
         <div class="footer-grid">
             <div class="footer-brand">
-                <a href="#" class="nav-logo">
-                    <svg class="mlogo" viewBox="0 0 600 300" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                            <linearGradient id="lg-footer" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" stop-color="#a78bfa"/>
-                                <stop offset="100%" stop-color="#8b5cf6"/>
-                            </linearGradient>
-                        </defs>
-                        <path d="M 300,150 C 200,50 50,50 50,150 C 50,250 200,250 300,150 C 400,250 550,250 550,150 C 550,50 400,50 300,150"
-                              fill="none" stroke="url(#lg-footer)" stroke-width="45" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M 270,180 C 285,165 300,150 315,135"
-                              fill="none" stroke="#05040a" stroke-width="55" stroke-linecap="round"/>
-                        <path d="M 270,180 C 285,165 300,150 315,135"
-                              fill="none" stroke="url(#lg-footer)" stroke-width="45" stroke-linecap="round"/>
-                    </svg>
-                    <span class="nav-name">Nexus <span>IA</span></span>
+                <a href="#">
+                    <img src="logo.png" alt="Nexus IA Tech" style="height:80px;width:auto;opacity:0.92">
                 </a>
                 <p>Criando tecnologias robustas com a expertise do direito corporativo e a engenharia de software.</p>
             </div>
