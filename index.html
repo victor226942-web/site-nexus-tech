@@ -5,261 +5,631 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Nexus IA — De Campos para o Mundo</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
 <style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--bg:#07060f;--bg2:#0e0c1c;--bg3:#13112a;--v1:#7c5cfc;--v2:#a78bfa;--v3:rgba(124,92,252,0.12);--text:#eeeaf8;--muted:#5a5378;--mid:#9488b8;--border:rgba(255,255,255,0.06);--bordv:rgba(124,92,252,0.28);--font:'Syne',sans-serif;--body:'Inter',sans-serif}
-html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--text);font-family:var(--body);min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased}
-body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(rgba(124,92,252,0.14) 1px,transparent 1px);background-size:32px 32px;pointer-events:none;z-index:0}
-body::after{content:'';position:fixed;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(124,92,252,0.07) 0%,transparent 70%);top:-180px;right:-180px;pointer-events:none;z-index:0}
-.wrap{position:relative;z-index:2;max-width:900px;margin:0 auto;padding:0 28px}
-nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 36px;display:flex;align-items:center;justify-content:space-between;background:rgba(7,6,15,0.85);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
-.nav-logo{display:flex;align-items:center;gap:13px;text-decoration:none}
-.nav-name{font-family:var(--font);font-size:18px;font-weight:800;color:var(--text);letter-spacing:-0.5px}
-.nav-name span{color:var(--v2)}
-.nav-links{display:flex;gap:28px;list-style:none}
-.nav-links a{font-size:13px;font-weight:500;color:var(--muted);text-decoration:none;transition:color 0.2s}
-.nav-links a:hover{color:var(--text)}
-.mlogo{width:60px;height:30px;flex-shrink:0;filter:drop-shadow(0 0 6px rgba(124,92,252,0.5))}
-.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:120px 0 80px;position:relative}
-.hero-bg{position:absolute;right:-80px;top:50%;transform:translateY(-50%);opacity:0.05;pointer-events:none;width:560px;height:340px}
-.hero-eyebrow{font-size:11px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:var(--v2);opacity:0.8;margin-bottom:28px;display:flex;align-items:center;gap:12px}
-.hero-eyebrow::before{content:'';width:28px;height:1px;background:var(--v2);opacity:0.6}
-.hero h1{font-family:var(--font);font-size:clamp(46px,9vw,86px);font-weight:800;line-height:1.02;letter-spacing:-2px;color:var(--text);margin-bottom:28px}
-.hero h1 .accent{color:var(--v2)}
-.hero h1 .sub{display:block;font-size:clamp(18px,3.2vw,32px);font-weight:400;color:var(--mid);letter-spacing:-0.5px;margin-top:6px}
-.hero-desc{font-size:16px;line-height:1.8;color:var(--mid);max-width:520px;margin-bottom:44px;font-weight:300}
-.hero-desc strong{color:var(--text);font-weight:500}
-.hero-cta{display:flex;gap:12px;flex-wrap:wrap}
-.btn-primary{display:inline-flex;align-items:center;gap:10px;font-family:var(--font);font-size:13px;font-weight:700;letter-spacing:0.5px;text-decoration:none;color:#fff;background:var(--v1);border:none;padding:13px 26px;border-radius:3px;transition:background 0.2s,transform 0.15s;cursor:pointer}
-.btn-primary:hover{background:#6a4de0;transform:translateY(-1px)}
-.btn-ghost{display:inline-flex;align-items:center;gap:10px;font-family:var(--font);font-size:13px;font-weight:600;letter-spacing:0.5px;text-decoration:none;color:var(--v2);background:transparent;border:1px solid var(--bordv);padding:13px 26px;border-radius:3px;transition:background 0.2s,border-color 0.2s;cursor:pointer}
-.btn-ghost:hover{background:var(--v3);border-color:var(--v1)}
-.divider{height:1px;background:linear-gradient(90deg,transparent,var(--bordv),transparent);margin:80px 0}
-.section-tag{font-size:10px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:var(--v2);opacity:0.7;margin-bottom:14px}
-.section-title{font-family:var(--font);font-size:clamp(26px,4vw,40px);font-weight:800;letter-spacing:-1px;color:var(--text);line-height:1.1;margin-bottom:20px}
-.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;margin-top:40px}
-.about-text{font-size:15px;line-height:1.85;color:var(--mid);font-weight:300}
-.about-text p{margin-bottom:18px}
-.about-text p:last-child{margin-bottom:0}
-.about-text strong{color:var(--text);font-weight:500}
-.about-stats{display:flex;flex-direction:column;gap:20px}
-.stat-card{background:var(--bg2);border:1px solid var(--border);border-left:2px solid var(--v1);padding:20px 22px;border-radius:3px}
-.stat-num{font-family:var(--font);font-size:28px;font-weight:800;color:var(--v2);letter-spacing:-1px;line-height:1;margin-bottom:4px}
-.stat-label{font-size:12px;color:var(--muted);font-weight:400}
-.mv-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-top:36px}
-.mv-card{background:var(--bg2);border:1px solid var(--border);padding:24px 22px;border-radius:3px;transition:border-color 0.3s,background 0.3s}
-.mv-card:hover{border-color:var(--bordv);background:var(--bg3)}
-.mv-icon{width:36px;height:36px;background:var(--v3);border-radius:3px;display:flex;align-items:center;justify-content:center;margin-bottom:14px}
-.mv-card-title{font-family:var(--font);font-size:14px;font-weight:700;color:var(--text);margin-bottom:10px}
-.mv-card-text{font-size:13px;line-height:1.75;color:var(--muted);font-weight:300}
-.prod-card{border:1px solid var(--border);background:var(--bg2);border-radius:3px;padding:30px 34px;margin-bottom:14px;position:relative;overflow:hidden;transition:border-color 0.3s,background 0.3s}
-.prod-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--v1);transform:scaleY(0);transition:transform 0.3s ease;transform-origin:bottom}
-.prod-card:hover{border-color:var(--bordv);background:var(--bg3)}
-.prod-card:hover::before{transform:scaleY(1)}
-.prod-card.blurred{opacity:0.48;cursor:not-allowed}
-.prod-card.blurred .prod-name,.prod-card.blurred .prod-desc{filter:blur(3px);transition:filter 0.4s;user-select:none}
-.prod-card.blurred:hover{opacity:0.82}
-.prod-card.blurred:hover .prod-name,.prod-card.blurred:hover .prod-desc{filter:blur(0.8px)}
-.prod-header{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:12px}
-.prod-name{font-family:var(--font);font-size:22px;font-weight:800;color:var(--text);letter-spacing:-0.5px}
-.badge-on{font-size:9px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;background:rgba(124,92,252,0.15);color:var(--v2);border:1px solid rgba(124,92,252,0.25);padding:4px 11px;border-radius:2px}
-.badge-off{font-size:9px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;background:rgba(90,83,120,0.15);color:var(--muted);border:1px solid rgba(90,83,120,0.25);padding:4px 11px;border-radius:2px}
-.prod-desc{font-size:14px;line-height:1.75;color:var(--muted);max-width:560px;margin-bottom:22px;font-weight:300}
-.status-pill{display:inline-flex;align-items:center;gap:8px;font-size:10px;letter-spacing:2px;text-transform:uppercase;font-family:var(--font);color:var(--muted);border:1px solid rgba(90,83,120,0.25);padding:9px 16px;border-radius:2px}
-.sdot{width:5px;height:5px;border-radius:50%;background:var(--muted);animation:sdot 2.4s ease-in-out infinite}
-@keyframes sdot{0%,100%{opacity:0.25}50%{opacity:0.9}}
-footer{border-top:1px solid var(--border);padding:44px 0 60px}
-.footer-inner{display:flex;align-items:flex-start;justify-content:space-between;gap:32px;flex-wrap:wrap;margin-bottom:36px}
-.footer-tagline{font-size:12px;color:var(--muted);margin-top:6px;line-height:1.6}
-.footer-links{display:flex;flex-direction:column;gap:10px}
-.footer-link{display:inline-flex;align-items:center;gap:9px;font-size:13px;color:var(--muted);text-decoration:none;transition:color 0.2s}
-.footer-link:hover{color:var(--v2)}
-.footer-copy{font-size:11px;color:var(--muted);opacity:0.4;border-top:1px solid var(--border);padding-top:24px}
-.fi{opacity:0;transform:translateY(20px);transition:opacity 0.65s ease,transform 0.65s ease}
-.fi.v{opacity:1;transform:translateY(0)}
-@media(max-width:680px){.about-grid{grid-template-columns:1fr;gap:32px}.mv-grid{grid-template-columns:1fr}.nav-links{display:none}.prod-card{padding:22px 20px}.prod-header{flex-direction:column;align-items:flex-start;gap:8px}.footer-inner{flex-direction:column}.hero-bg{display:none}}
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --bg-main: #080711;
+    --bg-card: #110f22;
+    --bg-card-hover: #151329;
+    --text-primary: #ffffff;
+    --text-secondary: #94a3b8;
+    --text-muted: #4f4a6e;
+    --border-color: rgba(255, 255, 255, 0.05);
+    --border-hover: rgba(139, 92, 246, 0.2);
+    --accent-electric: #8b5cf6;
+    --accent-light: #a78bfa;
+    --accent-glow: rgba(139, 92, 246, 0.15);
+    --font-header: 'Syne', sans-serif;
+    --font-body: 'Plus Jakarta Sans', sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    min-height: 100vh;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.6;
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+        linear-gradient(to right, rgba(255,255,255,0.008) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255,255,255,0.008) 1px, transparent 1px),
+        radial-gradient(circle at 20% 30%, rgba(139,92,246,0.03) 0%, transparent 60%);
+    background-size: 40px 40px, 40px 40px, 100% 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.container {
+    position: relative;
+    z-index: 1;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+/* NAV */
+nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 20px 0;
+    background: rgba(8, 7, 17, 0.75);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.nav-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+}
+
+.mlogo { width: 48px; height: auto; }
+
+.nav-name {
+    font-family: var(--font-header);
+    font-size: 19px;
+    font-weight: 800;
+    color: var(--text-primary);
+    letter-spacing: -0.5px;
+}
+.nav-name span { color: var(--accent-electric); }
+
+.nav-links { display: flex; gap: 32px; list-style: none; }
+.nav-links a {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+.nav-links a:hover { color: var(--accent-light); }
+
+/* HERO */
+.hero {
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 160px 0 80px;
+}
+
+.hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--accent-light);
+    background: var(--accent-glow);
+    padding: 6px 14px;
+    border-radius: 100px;
+    margin-bottom: 32px;
+    border: 1px solid rgba(139, 92, 246, 0.2);
+    width: fit-content;
+}
+
+.hero h1 {
+    font-family: var(--font-header);
+    font-size: clamp(40px, 7vw, 76px);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -2px;
+    margin-bottom: 24px;
+}
+.hero h1 span.accent { color: var(--accent-electric); }
+
+.hero-desc {
+    font-size: 18px;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin-bottom: 40px;
+    font-weight: 300;
+}
+.hero-desc strong { color: var(--text-primary); font-weight: 500; }
+
+.hero-cta { display: flex; gap: 16px; flex-wrap: wrap; }
+
+/* BOTÕES */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 14px 28px;
+    border-radius: 4px;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    cursor: pointer;
+}
+.btn-primary {
+    background: var(--accent-electric);
+    color: #fff;
+    border: none;
+    box-shadow: 0 4px 20px rgba(139, 92, 246, 0.25);
+}
+.btn-primary:hover {
+    background: var(--accent-light);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(139, 92, 246, 0.4);
+}
+.btn-secondary {
+    background: transparent;
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+}
+.btn-secondary:hover {
+    background: rgba(255,255,255,0.03);
+    border-color: var(--text-secondary);
+}
+
+/* SECTIONS */
+.section-header { margin-bottom: 48px; }
+.section-label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+    display: block;
+}
+.section-title {
+    font-family: var(--font-header);
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 800;
+    letter-spacing: -1px;
+    line-height: 1.15;
+}
+
+/* BENTO GRID */
+.bento-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 24px;
+    margin-bottom: 80px;
+}
+
+.bento-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    padding: 40px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: border-color 0.3s ease;
+}
+.bento-card:hover { border-color: var(--border-hover); }
+.bento-card p {
+    color: var(--text-secondary);
+    font-size: 16px;
+    font-weight: 300;
+    margin-bottom: 20px;
+}
+.bento-card p strong { color: var(--text-primary); font-weight: 500; }
+
+.stats-panel { display: flex; flex-direction: column; gap: 16px; }
+
+.stat-item {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    padding: 24px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+.stat-item:hover { border-color: var(--border-hover); }
+
+.stat-num {
+    font-family: var(--font-header);
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--accent-light);
+    line-height: 1;
+    margin-bottom: 6px;
+}
+.stat-label { font-size: 13px; color: var(--text-secondary); }
+
+/* MVV */
+.mvv-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 80px;
+}
+.mvv-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    padding: 32px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+.mvv-card:hover { border-color: var(--border-hover); transform: translateY(-2px); }
+.mvv-icon { color: var(--accent-light); margin-bottom: 20px; }
+.mvv-title {
+    font-family: var(--font-header);
+    font-size: 16px;
+    font-weight: 800;
+    margin-bottom: 12px;
+}
+.mvv-text { font-size: 14px; color: var(--text-secondary); font-weight: 300; }
+
+/* PRODUTOS */
+.products-stack { display: flex; flex-direction: column; gap: 16px; }
+
+.prod-row {
+    display: grid;
+    grid-template-columns: 240px 1fr 180px;
+    align-items: center;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    padding: 32px;
+    border-radius: 8px;
+    gap: 32px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    color: inherit;
+}
+.prod-row:nth-child(2) { padding: 28px 32px; }
+.prod-row:nth-child(3) { padding: 36px 32px; }
+
+.prod-row:not(.disabled):hover {
+    border-color: var(--border-hover);
+    background: var(--bg-card-hover);
+}
+
+.prod-info h4 {
+    font-family: var(--font-header);
+    font-size: 20px;
+    font-weight: 800;
+    margin-bottom: 4px;
+}
+
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 4px 10px;
+    border-radius: 4px;
+    width: fit-content;
+}
+.badge-active {
+    background: rgba(16, 185, 129, 0.1);
+    color: #10b981;
+    border: 1px solid rgba(16, 185, 129, 0.2);
+}
+.badge-dev {
+    background: rgba(180, 130, 255, 0.08);
+    color: #b79aff;
+    border: 1px solid rgba(180, 130, 255, 0.15);
+}
+
+.prod-description {
+    font-size: 14px;
+    color: var(--text-secondary);
+    font-weight: 300;
+}
+.prod-action { text-align: right; }
+
+.prod-row.disabled { opacity: 0.5; cursor: not-allowed; }
+.prod-row.disabled .prod-action span {
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+/* DIVISOR */
+.line-divider {
+    height: 1px;
+    background: linear-gradient(90deg, var(--border-color), transparent);
+    margin: 100px 0;
+}
+
+/* FOOTER */
+footer {
+    border-top: 1px solid var(--border-color);
+    padding: 80px 0 40px;
+    background: #05040a;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 60px;
+    margin-bottom: 60px;
+}
+.footer-grid .footer-brand { padding-left: 4px; }
+
+.footer-brand p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-top: 16px;
+    max-width: 320px;
+}
+
+.footer-links-group { display: flex; flex-direction: column; gap: 16px; }
+.footer-link-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+.footer-link-item:hover { color: var(--accent-light); }
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(255,255,255,0.03);
+    padding-top: 40px;
+    font-size: 12px;
+    color: var(--text-muted);
+}
+.footer-bottom span:last-child { font-weight: 300; letter-spacing: 0.3px; }
+
+/* REVEAL */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* RESPONSIVO */
+@media(max-width: 900px) {
+    .bento-grid { grid-template-columns: 1fr; }
+    .mvv-grid { grid-template-columns: 1fr; }
+    .prod-row { grid-template-columns: 1fr; gap: 16px; }
+    .prod-action { text-align: left; }
+    .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+    .nav-links { display: none; }
+    .footer-bottom { flex-direction: column; gap: 12px; align-items: flex-start; }
+}
 </style>
 </head>
 <body>
 
 <nav>
-  <a href="#" class="nav-logo">
-    <svg class="mlogo" viewBox="0 0 600 300" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <linearGradient id="nm-back" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stop-color="#4c1d95"/>
-          <stop offset="55%" stop-color="#5b21b6"/>
-          <stop offset="100%" stop-color="#1e1b4b"/>
-        </linearGradient>
-        <linearGradient id="nm-front" x1="100%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stop-color="#c4b5fd"/>
-          <stop offset="50%" stop-color="#a78bfa"/>
-          <stop offset="100%" stop-color="#7c5cfc"/>
-        </linearGradient>
-      </defs>
-      <!-- Back loop (left) — dark surface, drawn first -->
-      <path d="M 300,150 C 200,50 50,50 50,150 C 50,250 200,250 300,150"
-            fill="none" stroke="url(#nm-back)" stroke-width="46" stroke-linecap="round"/>
-      <!-- Front loop (right) — light surface, drawn over back -->
-      <path d="M 300,150 C 400,250 550,250 550,150 C 550,50 400,50 300,150"
-            fill="none" stroke="url(#nm-front)" stroke-width="44" stroke-linecap="round"/>
-      <!-- Painter mask: erase front loop segment that should go under -->
-      <path d="M 258,192 C 278,170 300,150 322,130"
-            fill="none" stroke="#07060f" stroke-width="54" stroke-linecap="round"/>
-      <!-- Redraw back loop on top at crossing — back passes over front here -->
-      <path d="M 262,188 C 281,167 300,150 319,133"
-            fill="none" stroke="url(#nm-back)" stroke-width="44" stroke-linecap="round"/>
-      <!-- Center twist glow -->
-      <circle cx="300" cy="150" r="12" fill="#c4b5fd" opacity="0.88"/>
-      <circle cx="300" cy="150" r="6" fill="#ffffff" opacity="0.72"/>
-    </svg>
-    <span class="nav-name">Nexus <span>IA</span></span>
-  </a>
-  <ul class="nav-links">
-    <li><a href="#sobre">Sobre</a></li>
-    <li><a href="#missao">Missão</a></li>
-    <li><a href="#produtos">Produtos</a></li>
-    <li><a href="#contato">Contato</a></li>
-  </ul>
+    <div class="container nav-wrapper">
+        <a href="#" class="nav-logo">
+            <svg class="mlogo" viewBox="0 0 600 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="lg-nav" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#a78bfa"/>
+                        <stop offset="100%" stop-color="#8b5cf6"/>
+                    </linearGradient>
+                </defs>
+                <path d="M 300,150 C 200,50 50,50 50,150 C 50,250 200,250 300,150 C 400,250 550,250 550,150 C 550,50 400,50 300,150"
+                      fill="none" stroke="url(#lg-nav)" stroke-width="45" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M 270,180 C 285,165 300,150 315,135"
+                      fill="none" stroke="#080711" stroke-width="55" stroke-linecap="round"/>
+                <path d="M 270,180 C 285,165 300,150 315,135"
+                      fill="none" stroke="url(#lg-nav)" stroke-width="45" stroke-linecap="round"/>
+            </svg>
+            <span class="nav-name">Nexus <span>IA</span></span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="#sobre">Sobre</a></li>
+            <li><a href="#missao">Missão</a></li>
+            <li><a href="#produtos">Módulos</a></li>
+            <li><a href="#contato">Contato</a></li>
+        </ul>
+    </div>
 </nav>
 
-<div class="wrap">
+<div class="container">
 
-  <section class="hero">
-    <svg class="hero-bg" viewBox="0 0 600 300" fill="none">
-      <path d="M 300,150 C 200,50 50,50 50,150 C 50,250 200,250 300,150" stroke="#a78bfa" stroke-width="1.8" stroke-linecap="round" fill="none"/>
-      <path d="M 300,150 C 400,250 550,250 550,150 C 550,50 400,50 300,150" stroke="#7c5cfc" stroke-width="1.8" stroke-linecap="round" fill="none"/>
-    </svg>
-    <div class="hero-eyebrow fi">De Campos dos Goytacazes para o mundo</div>
-    <h1 class="fi" style="transition-delay:0.08s">Inteligência<br><span class="accent">que transforma</span><span class="sub">mercados, negócios e pessoas.</span></h1>
-    <p class="hero-desc fi" style="transition-delay:0.16s">A <strong>Nexus IA</strong> nasceu da junção entre direito, tecnologia e visão de futuro. Dois jovens estudantes com um objetivo claro: construir a maior empresa de tecnologia de Campos — e levar isso para o mundo.</p>
-    <div class="hero-cta fi" style="transition-delay:0.22s">
-      <a href="#produtos" class="btn-primary">Ver nossos produtos</a>
-      <a href="#sobre" class="btn-ghost">Nossa história</a>
-    </div>
-  </section>
-
-  <div class="divider fi"></div>
-
-  <section class="fi" id="sobre">
-    <div class="section-tag">Nossa história</div>
-    <h2 class="section-title">Nascemos em Campos.<br>Pensamos no mundo.</h2>
-    <div class="about-grid">
-      <div class="about-text">
-        <p>A Nexus IA nasceu da união de dois jovens com formações distintas e uma visão em comum. <strong>Um estudante de Direito e Advocacia</strong>, com olhar para regulação, contratos e estratégia. <strong>Um estudante de Engenharia da Computação</strong>, com domínio técnico em sistemas, inteligência artificial e automação.</p>
-        <p>Juntos, em parceria com a <strong>Líder Brasil Tecnologia</strong>, estruturamos um ecossistema de soluções digitais pensado para resolver problemas reais do mercado brasileiro — com tecnologia de ponta e execução precisa.</p>
-        <p>Campos dos Goytacazes não é só onde estamos. É de onde vem nossa identidade, nossa determinação e nossa prova de que inovação não precisa de endereço em São Paulo para mudar o mercado nacional.</p>
-      </div>
-      <div class="about-stats">
-        <div class="stat-card"><div class="stat-num">2</div><div class="stat-label">Fundadores — Direito + Engenharia da Computação</div></div>
-        <div class="stat-card"><div class="stat-num">2+</div><div class="stat-label">Plataformas SaaS ativas no mercado</div></div>
-        <div class="stat-card"><div class="stat-num">∞</div><div class="stat-label">Ambição — de Campos para o mundo</div></div>
-      </div>
-    </div>
-  </section>
-
-  <div class="divider fi"></div>
-
-  <section class="fi" id="missao">
-    <div class="section-tag">O que nos move</div>
-    <h2 class="section-title">Missão, Visão e Valores</h2>
-    <div class="mv-grid">
-      <div class="mv-card">
-        <div class="mv-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg></div>
-        <div class="mv-card-title">Missão</div>
-        <div class="mv-card-text">Transformar a forma como empresas gerenciam, vendem e crescem — entregando tecnologia de alto nível com raiz regional e impacto nacional.</div>
-      </div>
-      <div class="mv-card">
-        <div class="mv-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></div>
-        <div class="mv-card-title">Visão</div>
-        <div class="mv-card-text">Ser a maior empresa de tecnologia de Campos dos Goytacazes e expandir esse ecossistema para o mercado nacional e internacional.</div>
-      </div>
-      <div class="mv-card">
-        <div class="mv-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
-        <div class="mv-card-title">Valores</div>
-        <div class="mv-card-text">Inovação com propósito, execução com precisão, parceria com lealdade. Tecnologia que resolve — não que impressiona.</div>
-      </div>
-    </div>
-  </section>
-
-  <div class="divider fi"></div>
-
-  <section class="fi" id="produtos">
-    <div class="section-tag">Ecossistema</div>
-    <h2 class="section-title">Nossos módulos</h2>
-    <div style="margin-top:32px">
-      <div class="prod-card">
-        <div class="prod-header"><span class="prod-name">DatumAgro</span><span class="badge-on">Online</span></div>
-        <p class="prod-desc">A evolução da gestão pecuária. Plataforma SaaS/HaaS que integra monitoramento por brincos RFID e controle de peso, trazendo automação e inteligência de dados para o gerenciamento de pastagens e rebanhos.</p>
-        <a href="#" class="btn-primary" style="font-size:12px;padding:11px 22px;">Acessar plataforma <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6h8M6 2l4 4-4 4"/></svg></a>
-      </div>
-      <div class="prod-card">
-        <div class="prod-header"><span class="prod-name">NexusCRM</span><span class="badge-on">Online</span></div>
-        <p class="prod-desc">O coração comercial do ecossistema. Gestão inteligente de relacionamento, automação de funis e centralização de dados para escalar operações com a precisão da IA — com integração nativa ao WhatsApp.</p>
-        <a href="#" class="btn-primary" style="font-size:12px;padding:11px 22px;">Entrar no CRM <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6h8M6 2l4 4-4 4"/></svg></a>
-      </div>
-      <div class="prod-card blurred">
-        <div class="prod-header"><span class="prod-name">Guardião Digital</span><span class="badge-off">Em produção</span></div>
-        <p class="prod-desc">Visão computacional e segurança industrial. Monitoramento inteligente de ambientes de trabalho em tempo real para conformidade de EPIs e prevenção proativa de acidentes.</p>
-        <div class="status-pill"><span class="sdot"></span>Módulo em produção // breve</div>
-      </div>
-      <div class="prod-card blurred">
-        <div class="prod-header"><span class="prod-name">Dragon Trader</span><span class="badge-off">Compilando</span></div>
-        <p class="prod-desc">Execução financeira milimétrica baseada em lógica fuzzy e automação de alta performance no mercado.</p>
-        <div class="status-pill"><span class="sdot"></span>Compilando pipeline // breve</div>
-      </div>
-    </div>
-  </section>
-
-  <div class="divider fi"></div>
-
-  <footer id="contato" class="fi">
-    <div class="footer-inner">
-      <div>
-        <div style="display:flex;align-items:center;gap:13px;margin-bottom:8px;">
-          <svg class="mlogo" viewBox="0 0 600 300" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <linearGradient id="fm-back" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#4c1d95"/>
-                <stop offset="55%" stop-color="#5b21b6"/>
-                <stop offset="100%" stop-color="#1e1b4b"/>
-              </linearGradient>
-              <linearGradient id="fm-front" x1="100%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stop-color="#c4b5fd"/>
-                <stop offset="50%" stop-color="#a78bfa"/>
-                <stop offset="100%" stop-color="#7c5cfc"/>
-              </linearGradient>
-            </defs>
-            <path d="M 300,150 C 200,50 50,50 50,150 C 50,250 200,250 300,150"
-                  fill="none" stroke="url(#fm-back)" stroke-width="46" stroke-linecap="round"/>
-            <path d="M 300,150 C 400,250 550,250 550,150 C 550,50 400,50 300,150"
-                  fill="none" stroke="url(#fm-front)" stroke-width="44" stroke-linecap="round"/>
-            <path d="M 258,192 C 278,170 300,150 322,130"
-                  fill="none" stroke="#07060f" stroke-width="54" stroke-linecap="round"/>
-            <path d="M 262,188 C 281,167 300,150 319,133"
-                  fill="none" stroke="url(#fm-back)" stroke-width="44" stroke-linecap="round"/>
-            <circle cx="300" cy="150" r="12" fill="#c4b5fd" opacity="0.88"/>
-            <circle cx="300" cy="150" r="6" fill="#ffffff" opacity="0.72"/>
-          </svg>
-          <span style="font-family:'Syne',sans-serif;font-size:18px;font-weight:800;color:#eeeaf8;letter-spacing:-0.5px;">Nexus <span style="color:#a78bfa">IA</span></span>
+    <section class="hero">
+        <div class="hero-tag">De Campos para o Mundo</div>
+        <h1>Inteligência que<br><span class="accent">simplifica</span> o amanhã.</h1>
+        <p class="hero-desc">Fundada por mentes do <strong>Direito</strong> e da <strong>Engenharia de Computação</strong>. Nós decodificamos problemas complexos do mercado para criar soluções digitais implacáveis.</p>
+        <div class="hero-cta">
+            <a href="#produtos" class="btn btn-primary">Conhecer Ecossistema</a>
+            <a href="#sobre" class="btn btn-secondary">Nossa Trajetória</a>
         </div>
-        <p class="footer-tagline">De Campos dos Goytacazes<br>para o mundo.</p>
-      </div>
-      <div class="footer-links">
-        <a href="https://wa.me/55" class="footer-link" target="_blank" rel="noopener"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>WhatsApp Comercial</a>
-        <a href="https://linkedin.com" class="footer-link" target="_blank" rel="noopener"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>LinkedIn</a>
-        <a href="mailto:contato@nexusia.com.br" class="footer-link"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>Contato / Suporte</a>
-      </div>
-    </div>
-    <p class="footer-copy">© 2026 Nexus IA Tech — Campos dos Goytacazes, RJ · Em parceria com Líder Brasil Tecnologia</p>
-  </footer>
+    </section>
+
+    <div class="line-divider"></div>
+
+    <section id="sobre" class="reveal">
+        <div class="section-header">
+            <span class="section-label">Fundação</span>
+            <h2 class="section-title">Onde a lógica encontra a regra.</h2>
+        </div>
+        <div class="bento-grid">
+            <div class="bento-card">
+                <div>
+                    <p>A Nexus IA é fruto de uma complementaridade rara: a união entre a precisão estrutural do <strong>Direito e Advocacia</strong> e o poder analítico da <strong>Engenharia de Computação</strong>.</p>
+                    <p>Em parceria estratégica com a gigante <strong>Líder Brasil Tecnologia</strong>, construímos inteligência robusta de ponta a ponta, unindo segurança regulatória extrema a código de alta performance.</p>
+                    <p>Provamos diariamente que inovação de relevância global nasce aqui, em Campos dos Goytacazes.</p>
+                </div>
+            </div>
+            <div class="stats-panel">
+                <div class="stat-item">
+                    <div class="stat-num">02</div>
+                    <div class="stat-label">Áreas Pilares (Direito + Tech)</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-num">2+</div>
+                    <div class="stat-label">SaaS escaláveis ativos</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-num">∞</div>
+                    <div class="stat-label">Escala de impacto projetada</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="line-divider"></div>
+
+    <section id="missao" class="reveal">
+        <div class="section-header">
+            <span class="section-label">Diretrizes</span>
+            <h2 class="section-title">Nossa bússola de atuação</h2>
+        </div>
+        <div class="mvv-grid">
+            <div class="mvv-card">
+                <div class="mvv-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="2"/></svg>
+                </div>
+                <h3 class="mvv-title">Missão</h3>
+                <p class="mvv-text">Substituir sistemas obsoletos por fluxos digitais elegantes, autônomos e focados em gerar resultado financeiro e operacional.</p>
+            </div>
+            <div class="mvv-card">
+                <div class="mvv-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+                </div>
+                <h3 class="mvv-title">Visão</h3>
+                <p class="mvv-text">Estabelecer a Nexus IA como a principal referência tecnológica do interior fluminense, expandindo a operação nacionalmente.</p>
+            </div>
+            <div class="mvv-card">
+                <div class="mvv-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
+                </div>
+                <h3 class="mvv-title">Valores</h3>
+                <p class="mvv-text">Lógica cirúrgica, transparência intelectual, blindagem legal de dados e código limpo desenhado para durar.</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="line-divider"></div>
+
+    <section id="produtos" class="reveal">
+        <div class="section-header">
+            <span class="section-label">Ecossistema</span>
+            <h2 class="section-title">Sistemas em operação</h2>
+        </div>
+        <div class="products-stack">
+            <a href="#" class="prod-row">
+                <div>
+                    <span class="status-badge badge-active">Online</span>
+                    <h4 style="margin-top:12px">DatumAgro</h4>
+                </div>
+                <p class="prod-description">Inteligência aplicada à pecuária. Integração direta entre dispositivos de identificação animal (brincos RFID), balanças de campo e painéis analíticos que dão precisão total sobre ganho de peso e controle de pasto.</p>
+                <div class="prod-action">
+                    <span class="btn btn-secondary" style="padding:10px 18px;font-size:12px">Acessar Módulo</span>
+                </div>
+            </a>
+            <a href="#" class="prod-row">
+                <div>
+                    <span class="status-badge badge-active">Online</span>
+                    <h4 style="margin-top:12px">NexusCRM</h4>
+                </div>
+                <p class="prod-description">Centralizador comercial inteligente focado em automação de canais digitais. Reduz fricção de vendas com integrações robustas ao ecossistema do WhatsApp e distribuição guiada de Leads.</p>
+                <div class="prod-action">
+                    <span class="btn btn-secondary" style="padding:10px 18px;font-size:12px">Acessar Módulo</span>
+                </div>
+            </a>
+            <div class="prod-row disabled">
+                <div>
+                    <span class="status-badge badge-dev">Em Produção</span>
+                    <h4 style="margin-top:12px">Guardião Digital</h4>
+                </div>
+                <p class="prod-description">Módulo proprietário de visão computacional. Projetado para segurança do trabalho e conformidade instantânea no reconhecimento automático do uso correto de EPIs em áreas industriais.</p>
+                <div class="prod-action"><span>Breve</span></div>
+            </div>
+            <div class="prod-row disabled">
+                <div>
+                    <span class="status-badge badge-dev">Compilando</span>
+                    <h4 style="margin-top:12px">Dragon Trader</h4>
+                </div>
+                <p class="prod-description">Solução em análise quantitativa baseada em lógica de decisão adaptativa rápida e processamento autônomo de mercado.</p>
+                <div class="prod-action"><span>Breve</span></div>
+            </div>
+        </div>
+    </section>
+
+    <div class="line-divider"></div>
 
 </div>
+
+<footer id="contato">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="#" class="nav-logo">
+                    <svg class="mlogo" viewBox="0 0 600 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="lg-footer" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#a78bfa"/>
+                                <stop offset="100%" stop-color="#8b5cf6"/>
+                            </linearGradient>
+                        </defs>
+                        <path d="M 300,150 C 200,50 50,50 50,150 C 50,250 200,250 300,150 C 400,250 550,250 550,150 C 550,50 400,50 300,150"
+                              fill="none" stroke="url(#lg-footer)" stroke-width="45" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M 270,180 C 285,165 300,150 315,135"
+                              fill="none" stroke="#05040a" stroke-width="55" stroke-linecap="round"/>
+                        <path d="M 270,180 C 285,165 300,150 315,135"
+                              fill="none" stroke="url(#lg-footer)" stroke-width="45" stroke-linecap="round"/>
+                    </svg>
+                    <span class="nav-name">Nexus <span>IA</span></span>
+                </a>
+                <p>Criando tecnologias robustas com a expertise do direito corporativo e a engenharia de software.</p>
+            </div>
+            <div class="footer-links-group">
+                <span class="section-label">Fale Conosco</span>
+                <a href="https://wa.me/55" class="footer-link-item" target="_blank" rel="noopener">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    WhatsApp Corporativo
+                </a>
+                <a href="mailto:contato@nexusia.com.br" class="footer-link-item">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                    contato@nexusia.com.br
+                </a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>© 2026 Nexus IA Tech. Todos os direitos reservados.</span>
+            <span>Campos dos Goytacazes - RJ | Parceria Líder Brasil Tecnologia</span>
+        </div>
+    </div>
+</footer>
+
 <script>
-const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('v');obs.unobserve(x.target)}})},{threshold:0.08});
-document.querySelectorAll('.fi').forEach(el=>obs.observe(el));
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
 </body>
 </html>
